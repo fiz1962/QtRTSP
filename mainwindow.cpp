@@ -65,6 +65,8 @@ MainWindow::MainWindow(QWidget *parent)
         views[n]->hide();
 
     avformat_network_init();
+
+    ui->textEdit->append("QtRTSP v1.0");
 }
 
 MainWindow::~MainWindow()

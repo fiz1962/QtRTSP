@@ -44,20 +44,16 @@ linux:!android {
     LIBS += -L$$PWD/../libs -lavformat -lavcodec -lavutil -lswresample -lswscale
 }
 
-contains(ANDROID_TARGET_ARCH,arm64-v8a) {
-    message("Building for droid")
+android {
+    message("Building for $$ANDROID_TARGET_ARCH")
     QT += androidextras
-    DISTFILES += \
-        android-sources/AndroidManifest.xml
 
-    INCLUDEPATH += $$PWD/../ffmpeg-android-maker/output/include/arm64-v8a/
-    DEPENDPATH += $$PWD/../ffmpeg-android-maker/output/include/arm64-v8a
+    INCLUDEPATH += $$PWD/ffmpegAndroid/include/$$ANDROID_TARGET_ARCH/
+    DEPENDPATH += $$PWD/ffmpegAndroid/include/$$ANDROID_TARGET_ARCH
 
-    LIBS += -L$$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/ -lavformat -lavutil -lavcodec -lavdevice -lavfilter -lswresample -lswscale
+    LIBS += -L$$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/ -lavformat -lavutil -lavcodec -lavdevice -lavfilter -lswresample -lswscale
 
-    ANDROID_EXTRA_LIBS = $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libavcodec.so $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libavdevice.so $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libavfilter.so $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libavformat.so $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libavutil.so $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libswresample.so $$PWD/../ffmpeg-android-maker/output/lib/arm64-v8a/libswscale.so
+    ANDROID_EXTRA_LIBS = $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libavcodec.so $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libavdevice.so $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libavfilter.so $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libavformat.so $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libavutil.so $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libswresample.so $$PWD/ffmpegAndroid/lib/$$ANDROID_TARGET_ARCH/libswscale.so
 }
 
-ANDROID_ABIS = arm64-v8a
 
-RESOURCES +=
