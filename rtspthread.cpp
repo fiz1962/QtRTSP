@@ -101,10 +101,10 @@ bool RTSPThread::Init(QGraphicsView *thisView, string thisURL) {
 void RTSPThread::SaveFrame(AVFrame *pFrame, int width, int height) {
   QPixmap pixmap(height, width);
   QByteArray pixData;
-  pixData.append(QString("P6 %1 %2 255 ").arg(width).arg(height));
+  pixData.append(QString("P6 %1 %2 255 ").arg(width).arg(height).toUtf8());
   pixData.append((char *)pFrame->data[0], width * height * 3);
   pixmap.loadFromData((uchar *)pixData.data(), pixData.size());
-  pixmap = pixmap.scaledToWidth(view->width()*0.75);
+  pixmap = pixmap.scaledToWidth(view->width()*0.90);
   delete scene;
   scene = new QGraphicsScene;
   scene->addPixmap(pixmap);
