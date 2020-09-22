@@ -6,4 +6,4 @@ Works with Windows with ffmpeg from https://ffmpeg.zeranoe.com/builds/ and ffmpe
 
 https://github.com/Javernaut/ffmpeg-android-maker
 
-Edit QtRTSP.json file to add up to 6 RTSP streams.  App likely crashes if stream not available.  QtRTSP.json likely found in ~/.local/QtRTSP in Linux, c:\users\{user}\Appdata\Local\QtRTSP in Windows and {root}/QtRTSP folder in Android.
+Edit QtRTSP.json file to add up to 6 RTSP streams.  App likely crashes if stream not available.  QtRTSP.json likely found in ~/.local/QtRTSP in Linux, c:\users\{user}\Appdata\Local\QtRTSP in Windows and {root}/QtRTSP folder in Android.  A default file is written if QtRTSP.json is not found.
