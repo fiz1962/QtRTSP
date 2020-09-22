@@ -2,10 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QGraphicsScene>
-#include <QGraphicsView>
-
-
+#include "mygraphicsview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,12 +20,14 @@ public:
 
 
     RTSPThread* threads[6];
-    QGraphicsView* views[6];
+    MyGraphicsView* views[6];
 
 private slots:
     void on_pushButton_clicked();
 
     void on_actionE_xit_triggered();
+
+    void graphicsViewClicked(int val);
 
 private:
     Ui::MainWindow *ui;
