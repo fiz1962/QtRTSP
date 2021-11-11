@@ -26,6 +26,7 @@ public:
     bool Init(QGraphicsView* thisView, string thisURL);
     void Close();
     void SaveFrame(AVFrame *pFrame, int width, int height);
+    bool doInit();
 
     QGraphicsView* view;
     string url;

@@ -61,8 +61,10 @@ MainWindow::MainWindow(QWidget *parent)
     views[4] = ui->graphicsView_5;
     views[5] = ui->graphicsView_6;
 
-    for(int n=1; n<6; n++)
+    for(int n=1; n<6; n++) {
         views[n]->hide();
+        threads[n] = NULL;
+    }
 
     avformat_network_init();
 
@@ -87,7 +89,7 @@ void MainWindow::on_pushButton_clicked()
         IStreamWrapper isw(ifs);
         Document d;
         d.ParseStream(isw);
-        for(int n=0; n<6; n++) {
+        for(int n=0; n<3; n++) {
             QString url = "URL" + QString::number(n+1);
             if( d.HasMember(url.toStdString().c_str()) ) {
                 threads[n] = new RTSPThread;

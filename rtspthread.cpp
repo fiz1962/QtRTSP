@@ -20,6 +20,9 @@ void RTSPThread::run()
 {
     int n=0;
 
+    if( !doInit() )
+        return;
+
     while( av_read_frame(pFormatCtx, &packet) >= 0 )  {
         if(packet.stream_index==videoStream) {
 
@@ -55,7 +58,11 @@ bool RTSPThread::Init(QGraphicsView *thisView, string thisURL) {
     scene = new QGraphicsScene;
     view->setScene(scene);
 
-    if (avformat_open_input(&pFormatCtx, thisURL.c_str(), NULL, &options) != 0) {
+    return true;
+}
+
+bool RTSPThread::doInit() {
+    if (avformat_open_input(&pFormatCtx, url.c_str(), NULL, &options) != 0) {
         qDebug() << "ERROR could not open the file";
         return false;
     }
@@ -104,12 +111,19 @@ void RTSPThread::SaveFrame(AVFrame *pFrame, int width, int height) {
   pixData.append(QString("P6 %1 %2 255 ").arg(width).arg(height).toUtf8());
   pixData.append((char *)pFrame->data[0], width * height * 3);
   pixmap.loadFromData((uchar *)pixData.data(), pixData.size());
-  pixmap = pixmap.scaledToWidth(view->width()*0.90);
+  double vWidthRatio = (double)width/(double)view->width();
+  double vHeightRatio = (double)height/(double)view->height();
+
+  if( vWidthRatio > vHeightRatio ) {
+      pixmap = pixmap.scaledToWidth(view->width()*0.90);
+  } else {
+      pixmap = pixmap.scaledToHeight(view->height()*0.90);
+  }
   delete scene;
   scene = new QGraphicsScene;
   scene->addPixmap(pixmap);
   view->setScene(scene);
-  qDebug() << "Updating stream";
+  //qDebug() << "Updating stream";
   //update();
   //QApplication::processEvents();
 }
