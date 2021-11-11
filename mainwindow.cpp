@@ -69,6 +69,8 @@ MainWindow::MainWindow(QWidget *parent)
     avformat_network_init();
 
     ui->textEdit->append("QtRTSP v1.0");
+
+    connect(views[0], SIGNAL(clicked(int)), this, SLOT(graphicsViewClicked(int)));
 }
 
 MainWindow::~MainWindow()
@@ -130,3 +132,6 @@ void MainWindow::on_actionE_xit_triggered()
     QApplication::quit();
 }
 
+void MainWindow::graphicsViewClicked(int val) {
+    ui->textEdit->append("Clicky "+QString::number(val));
+}

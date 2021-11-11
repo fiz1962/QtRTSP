@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    mygraphicsview.cpp \
     rtspthread.cpp
 
 HEADERS += \
     mainwindow.h \
+    mygraphicsview.h \
     rtspthread.h
 
 FORMS += \
@@ -33,10 +35,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 win32 {
-    message("ffmpeg only runs in Release mode under windows")
+    message("Be sure to copy ffmpeg DLLs to app folder")
 
     INCLUDEPATH += C:\Qt\ffmpeg\include
     LIBS += -LC:\Qt\ffmpeg\lib -lavformat -lavcodec -lavutil -lswresample -lswscale
+    DEPENDPATH += C:\Qt\ffmpeg\bin
 }
 
 linux:!android {
