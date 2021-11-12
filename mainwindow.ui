@@ -23,13 +23,13 @@
       <widget class="QWidget" name="layoutWidget">
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="1">
-         <widget class="MyGraphicsView" name="graphicsView_5">
+         <widget class="MyGraphicsView" name="graphicsView_4">
           <property name="enabled">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
+        <item row="4" column="1">
          <widget class="MyGraphicsView" name="graphicsView_6">
           <property name="enabled">
            <bool>true</bool>
@@ -37,13 +37,6 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="MyGraphicsView" name="graphicsView_4">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
          <widget class="MyGraphicsView" name="graphicsView_2">
           <property name="enabled">
            <bool>true</bool>
@@ -53,8 +46,15 @@
         <item row="0" column="0">
          <widget class="MyGraphicsView" name="graphicsView_1"/>
         </item>
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="MyGraphicsView" name="graphicsView_3">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="MyGraphicsView" name="graphicsView_5">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -70,33 +70,7 @@
       <property name="text">
        <string>Do It</string>
       </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QTextEdit" name="textEdit">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>5</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Do It</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -106,7 +80,7 @@
      <x>0</x>
      <y>0</y>
      <width>787</width>
-     <height>26</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
